@@ -2,85 +2,37 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
-class Author(models.Model):
-	user		= models.OneToOneField(User)
-	address		= models.TextField(blank=True)
-	birthday	= models.DateField(blank=True)
-	email2		= models.EmailField(blank=True)
-	phone		= models.CharField(max_length=20, blank=True)
-	
-	def __unicode__(self):
-		return self.user.first_name
+class MW_User(models.Model):
+	user			= models.OneToOneField(User)
+	display_name	= models.TextField()
 
+	class Meta:
+        verbose_name = "MW User"
+        verbose_name_plural = "MW Users"
 
-class Employer(models.Model):
-	name		= models.CharField(max_length=50)
-	loc			= models.CharField(max_length=50)
-	business	= models.CharField(max_length=50, blank=True)
-	
-	def __unicode__(self):
-		return self.name
+	def __str__(self):
+		return self.display_name
 
-
-class Institution(models.Model):
-	name		= models.CharField(max_length=50)
-	loc			= models.CharField(max_length=50)
-	
-	def __unicode__(self):
-		return self.name
-
-	
-class Job(models.Model):
-	position	= models.CharField(max_length=50)
-	employer	= models.ForeignKey(Employer)
+models.class ContactType(models.Model):
 	descr		= models.TextField()
-	start_date	= models.DateField()
-	end_date	= models.DateField()
-	
-	def __unicode__(self):
-		return self.position
 
+    class Meta:
+        verbose_name = "Contact type"
+        verbose_name_plural = "Contact types"
 
-class Education(models.Model):
-	title		= models.CharField(max_length=50)
-	institution	= models.ForeignKey(Institution)
-	descr		= models.TextField(blank=True)
-	start_date	= models.DateField()
-	end_date	= models.DateField()
-	
-	def __unicode__(self):
-		return self.title
+    def __str__(self):
+        return self.descr
+    
 
+models.class Contact(models.Model):
+	user 			= models.ForeignKey(MW_User)
+	contact_type 	= models.ForeignKey(ContactType)
+	contact_val		= models.TextField()
 
-class CV(models.Model):
-	author	= models.ForeignKey(Author)
-	descr	= models.TextField(blank=True)
-	added	= models.DateTimeField(auto_now_add=True)
-	updated	= models.DateTimeField(auto_now=True)
-	aboutme	= models.TextField(blank=True)
-	jobs	= models.ManyToManyField(Job, through='Work')
-	edus	= models.ManyToManyField(Education, through='Study')
-	
-	def __unicode__(self):
-		return self.descr
+    class Meta:
+        verbose_name = "Contact"
+        verbose_name_plural = "Contacts"
 
-
-class Work(models.Model):
-	cv		= models.ForeignKey(CV)
-	job		= models.ForeignKey(Job)
-	show	= models.BooleanField(default=True)
-	
-	def __unicode__(self):
-		return self.job.position
-
-
-class Study(models.Model):
-	cv		= models.ForeignKey(CV)
-	edu		= models.ForeignKey(Education)
-	show	= models.BooleanField(default=True)
-	
-	def __unicode__(self):
-		return self.edu.title
-	
-	
-	
+    def __str__(self):
+        return self.user.first_name
+    

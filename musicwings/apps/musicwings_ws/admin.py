@@ -4,36 +4,24 @@ from django.contrib.auth.models import User
 from musicwings.apps.musicwings_ws.models import *
 
 
-class AuthorInline(admin.StackedInline):
-    model = Author
+class MW_UserInline(admin.StackedInline):
+    model = MW_User
     can_delete = False
-    verbose_name_plural = 'authors'
 
 class UserAdmin(UserAdmin):
-    inlines = (AuthorInline, )
+    inlines = (MW_UserInline, )
 
 
 
-class WorkInLine(admin.TabularInline):
-    model = Work
+class ContactInLine(admin.TabularInline):
+    model = Contact
     extra = 3
-
-class StudyInLine(admin.TabularInline):
-    model = Study
-    extra = 3
-
-class CVAdmin(admin.ModelAdmin):
-    inlines = (WorkInLine, StudyInLine, )
 
 
 
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
-
-admin.site.register(CV, CVAdmin)
-admin.site.register(Employer)
-admin.site.register(Institution)
-admin.site.register(Job)
-admin.site.register(Education)
+admin.site.register(Contact)
+admin.site.register(ContactType)
 
 
