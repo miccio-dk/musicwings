@@ -5,17 +5,17 @@ from musicwings.apps.musicwings_ws.models import *
 
 
 class MW_UserInline(admin.StackedInline):
-    model = MW_User
-    can_delete = False
+	model = MW_User
+	can_delete = False
 
 class UserAdmin(UserAdmin):
-    inlines = (MW_UserInline, )
+	inlines = (MW_UserInline, )
 
 
 
 class ContactInLine(admin.TabularInline):
-    model = Contact
-    extra = 3
+	model = Contact
+	extra = 3
 
 
 

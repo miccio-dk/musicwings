@@ -7,32 +7,32 @@ class MW_User(models.Model):
 	display_name	= models.TextField()
 
 	class Meta:
-        verbose_name = "MW User"
-        verbose_name_plural = "MW Users"
+		verbose_name = "MW User"
+		verbose_name_plural = "MW Users"
 
 	def __str__(self):
 		return self.display_name
 
-models.class ContactType(models.Model):
+class ContactType(models.Model):
 	descr		= models.TextField()
 
-    class Meta:
-        verbose_name = "Contact type"
-        verbose_name_plural = "Contact types"
+	class Meta:
+		verbose_name = "Contact type"
+		verbose_name_plural = "Contact types"
 
-    def __str__(self):
-        return self.descr
-    
+	def __str__(self):
+		return self.descr
+	
 
-models.class Contact(models.Model):
+class Contact(models.Model):
 	user 			= models.ForeignKey(MW_User)
 	contact_type 	= models.ForeignKey(ContactType)
 	contact_val		= models.TextField()
 
-    class Meta:
-        verbose_name = "Contact"
-        verbose_name_plural = "Contacts"
+	class Meta:
+		verbose_name = "Contact"
+		verbose_name_plural = "Contacts"
 
-    def __str__(self):
-        return self.user.first_name
-    
+	def __str__(self):
+		return self.user.first_name
+	
