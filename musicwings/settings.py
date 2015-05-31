@@ -21,7 +21,7 @@ ALLOWED_HOSTS = ['musicwings.herokuapp.com', 'www.musicwin.gs']
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = FALSE
 TEMPLATE_DEBUG = DEBUG
 
 
