@@ -1,0 +1,15 @@
+Django
+argparse
+dj-database-url
+dj-static
+django-pagination
+django-tastypie
+django-toolbelt
+django-sitetree
+python-dateutil
+python-mimeparse
+six
+sqlparse
+static3
+wsgiref
+django-bootstrap3

@@ -1,0 +1,22 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Riccardo Miccini -- Developer
+    https://github.com/miccio-dk
+    Copenhagen, Denmark
+
+    Michele Sodano 
+    Copenhagen, Denmark
+
+# THANKS
+
+    
+
+# TECHNOLOGY COLOPHON
+
+    HTML5, CSS3,
+    jQuery, Modernizr,
+    H5BP, Bootstrap,
+    Django, Heroku
